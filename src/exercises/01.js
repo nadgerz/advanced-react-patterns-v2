@@ -19,7 +19,9 @@ class Toggle extends Component {
   // 💰 this.setState(newState, callback)
   handleClick = () => {
     console.log('Handling click')
-    // this.setState(newState, callback)
+    this.setState(prevState => ({
+      on: !prevState.on,
+    }))
   }
 
   //
