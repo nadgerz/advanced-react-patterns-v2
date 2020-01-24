@@ -36,13 +36,7 @@ class Toggle extends Component {
   // 💯 Use a state updater function for `newState` to avoid issues with batching
   render() {
     // 🐨 here you'll want to return the switch with the `on` and `onClick` props
-    return (
-      <Switch
-        onToggle={this.handleToggle}
-        onClick={this.handleClick}
-        on={this.state.on}
-      />
-    )
+    return <Switch onClick={this.handleClick} on={this.state.on} />
   }
 }
 
