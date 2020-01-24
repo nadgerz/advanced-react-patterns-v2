@@ -22,8 +22,11 @@
     "husky": "4.2.1",
     "inquirer": "^7.0.3",
     "is-ci": "^2.0.0",
+    "lint-staged": "^10.0.2",
     "node": "12.14.1",
     "npm-run-all": "4.1.5",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "react-scripts": "^3.3.0",
     "replace-in-file": "^5.0.2"
   },
@@ -36,7 +39,10 @@
     "contributors:generate": "all-contributors generate",
     "setup": "node ./scripts/verify && node ./scripts/install && npm run validate && node ./scripts/autofill-feedback-email.js",
     "validate": "npm-run-all --parallel build test:coverage",
-    "precommit": "npm run validate"
+    "precommit": "npm run validate",
+    "format": "pretty-quick --pattern \"**/*.*(js|jsx|scss|sass|css|json|ts|html)\"",
+    "format:full": "prettier --write \"./**/*.{js,jsx,css,htm,json,ts,html,sass,scss}\"",
+    "lint": "lint-staged"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -45,6 +51,20 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "pretty-quick --staged",
+      "eslint --fix"
+    ],
+    "*.+(json|css|md|html)": [
+      "pretty-quick --staged"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "browserslist": {
     "development": [
