@@ -1,5 +1,5 @@
-import 'react-testing-library/cleanup-after-each'
-import {render, fireEvent, wait} from 'react-testing-library'
+import '@testing-library/react/cleanup-after-each'
+import {render, fireEvent, wait} from '@testing-library/react'
 import chalk from 'chalk'
 import React from 'react'
 import {
