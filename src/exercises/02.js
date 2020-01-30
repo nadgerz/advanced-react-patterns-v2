@@ -16,17 +16,17 @@ class Toggle extends React.Component {
   //    be able to accept `on`, `toggle`, and `children` as props.
   //    Note that they will _not_ have access to Toggle instance properties
   //    like `this.state.on` or `this.toggle`.
+  static On = props => props.on ? props.children : null
+  static Off = props => props.on ? null : props.children
+
+  static Button = props => <div>{props.children}</div>
+
   state = {on: false}
   toggle = () =>
     this.setState(
       ({on}) => ({on: !on}),
       () => this.props.onToggle(this.state.on),
     )
-
-  static On = props => <div>{props.children}</div>
-  static Off = props => <div>{props.children}</div>
-
-  static Button = props => <div>{props.children}</div>
 
   render() {
     // we're trying to let people render the components they want within the Toggle component.
